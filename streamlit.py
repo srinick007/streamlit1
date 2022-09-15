@@ -3,7 +3,7 @@ import tensorflow as tf
 from tensorflow import keras
 from keras.models import load_model
 st.write("Hello There")
-mn=load_model("F:\\test2.h5")
+mn=load_model("DeepVisionModel.h5")
 mn.summary()
 
 
@@ -34,14 +34,14 @@ while run:
     _, frame = camera.read()
     image1 = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
     image1_b_w = cv2.cvtColor(image1, cv2.COLOR_BGR2GRAY)
-    image1_b_w=cv2.resize(image1_b_w,(224,224))
+    image1_b_w=cv2.resize(image1_b_w,(256,256))
 
     time.sleep(0.01)
     
     _, frame1 = camera.read()
     image2 = cv2.cvtColor(frame1, cv2.COLOR_BGR2RGB)
     image2_b_w = cv2.cvtColor(image2, cv2.COLOR_BGR2GRAY)
-    image2_b_w=cv2.resize(image2_b_w,(224,224))
+    image2_b_w=cv2.resize(image2_b_w,(256,256))
     absdiff = cv2.absdiff(image1_b_w,image2_b_w)
     absdiff=np.dstack([absdiff]*3)
     absdiff1 = np.expand_dims(absdiff, axis = 0)
